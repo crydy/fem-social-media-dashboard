@@ -1,9 +1,12 @@
 import { useState, createContext, useContext, useEffect } from "react";
 
 const ColorThemeContext = createContext();
+const isUserPreferDark = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+).matches;
 
 function ColorThemeProvider({ children }) {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(isUserPreferDark);
 
     useEffect(() => {
         if (isDarkMode) {
