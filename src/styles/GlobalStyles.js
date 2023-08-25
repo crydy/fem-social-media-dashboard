@@ -51,21 +51,17 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
 
-    /* Creating animations for dark mode */
+    /* Transition for dark mode */
     transition: background-color var(--transition-time), border var(--transition-time);
-}
-
-html {
-
 }
 
 body {
     font-family: "Inter", sans-serif;
+
     color: var(--color-text-weak);
     background-color: var(--color-bg);
-    min-width: ${rem(375)};
 
-    /* transition: color 0.3s, background-color 0.3s; */
+    min-width: ${rem(375)};
     min-height: 100vh;
 }
 
@@ -79,48 +75,6 @@ select {
 
 button {
     cursor: pointer;
-}
-
-*:disabled {
-    cursor: not-allowed;
-}
-
-select:disabled,
-input:disabled {
-    /* background-color: var(--color-grey-200);
-    color: var(--color-grey-500); */
-}
-
-input:focus,
-button:focus,
-textarea:focus,
-select:focus {
-    /* outline: 2px solid var(--color-brand-600);
-    outline-offset: -1px; */
-}
-
-button:has(svg) {
-    line-height: 0;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-ul {
-    list-style: none;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    overflow-wrap: break-word;
-    hyphens: auto;
 }
 
 img {

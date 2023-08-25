@@ -1,7 +1,8 @@
 import { styled } from "styled-components";
-import { rem } from "../utils/helpers";
+
 import { useColorTheme } from "../context/colorThemeContext";
 import { device } from "../utils/breakpoints";
+import { rem } from "../utils/helpers";
 
 const buttonCoreSize = 18;
 const buttonIndent = 3;
@@ -13,20 +14,24 @@ const StyledThemeSwitcher = styled.div`
     align-items: center;
     padding-top: ${rem(marginTop)};
     position: relative;
+    font-weight: 700;
 
     &::before {
         position: absolute;
         content: "";
+
         top: ${rem(marginTop * 0.5)};
         left: 0;
         width: 100%;
         height: ${rem(1)};
+
         background-color: var(--color-header-separator);
     }
 
     @media ${device.sm} {
         justify-content: center;
         gap: ${rem(14)};
+
         padding-top: 0;
 
         &::before {

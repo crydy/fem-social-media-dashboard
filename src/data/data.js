@@ -1,25 +1,25 @@
 const stats = {
     total: [
         {
-            social: "facebook",
+            platform: "facebook",
             userName: "@nathanf",
             total: 1987,
             today: 12,
         },
         {
-            social: "twitter",
+            platform: "twitter",
             userName: "@nathanf",
             total: 1044,
             today: 99,
         },
         {
-            social: "instagram",
+            platform: "instagram",
             userName: "@realnathanf",
             total: 11283,
             today: 1099,
         },
         {
-            social: "youtube",
+            platform: "youtube",
             userName: "Nathan F.",
             total: 8239,
             today: -144,

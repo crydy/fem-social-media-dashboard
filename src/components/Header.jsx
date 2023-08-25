@@ -1,9 +1,11 @@
 import { styled } from "styled-components";
-import Heading from "./Heading";
+
 import { decorateNumber, rem } from "../utils/helpers";
-import { stats } from "../data/data";
-import ThemeSwitcher from "./ThemeSwitcher";
 import { device } from "../utils/breakpoints";
+import { stats } from "../data/data";
+
+import Heading from "./Heading";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const StyledHeader = styled.header`
     margin: ${rem(40)} 0;

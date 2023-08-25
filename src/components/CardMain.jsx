@@ -1,21 +1,7 @@
 import { styled } from "styled-components";
 
-import { device } from "../utils/breakpoints";
+import { icons } from "../utils/cardIcons";
 import { rem, shortNumber } from "../utils/helpers";
-
-import iconFacebook from "../assets/icon-facebook.svg";
-import iconInstagram from "../assets/icon-instagram.svg";
-import iconTwitter from "../assets/icon-twitter.svg";
-import iconYoutube from "../assets/icon-youtube.svg";
-import iconUp from "../assets/icon-up.svg";
-import iconDown from "../assets/icon-down.svg";
-
-const icons = {
-    facebook: iconFacebook,
-    instagram: iconInstagram,
-    twitter: iconTwitter,
-    youtube: iconYoutube,
-};
 
 const StyledCard = styled.div`
     position: relative;
@@ -34,11 +20,6 @@ const StyledCard = styled.div`
 
     background-color: var(--color-card-bg);
 
-    @media ${device.sm} {
-        /* background-color: red; */
-        /* width: 50%; */
-    }
-
     &:hover {
         background-color: var(--color-card-bg-hover);
         cursor: pointer;
@@ -53,7 +34,7 @@ const StyledCard = styled.div`
         height: ${rem(4)};
 
         background: ${(props) => {
-            switch (props.$social) {
+            switch (props.$platform) {
                 case "facebook":
                     return "var(--color-facebook)";
                 case "twitter":
@@ -111,11 +92,11 @@ const StyledToday = styled.p`
             : "var(--color-text-decrease)"};
 `;
 
-function Card({ social, userName, total, today }) {
+function CardMain({ platform, userName, total, today }) {
     return (
-        <StyledCard $social={social}>
+        <StyledCard $platform={platform}>
             <StyledHeader>
-                <img src={icons[social]} alt={`${social} icon`} />
+                <img src={icons[platform]} alt={`${platform} icon`} />
                 <span>{userName}</span>
             </StyledHeader>
             <StyledTotal>
@@ -123,11 +104,14 @@ function Card({ social, userName, total, today }) {
                 <span>followers</span>
             </StyledTotal>
             <StyledToday $increase={today > 0}>
-                <img src={today > 0 ? iconUp : iconDown} alt="increase" />
+                <img
+                    src={today > 0 ? icons.iconUp : icons.iconDown}
+                    alt="increase"
+                />
                 <span>{today > 0 ? today : Math.abs(today)} today</span>
             </StyledToday>
         </StyledCard>
     );
 }
 
-export default Card;
+export default CardMain;

@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 
-import { stats } from "../data/data";
 import { rem } from "../utils/helpers";
 import { device } from "../utils/breakpoints";
 import { useColorTheme } from "../context/colorThemeContext";
 
-import Card from "./Card";
+import CardMain from "./CardMain";
+import CardSmall from "./CardSmall";
 
 const StyledSection = styled.section`
     display: flex;
@@ -36,22 +36,33 @@ const Title = styled.h2`
     text-transform: capitalize;
 `;
 
-function Section({ title }) {
+function Section({ type, cardsData, title }) {
     const { isDarkMode } = useColorTheme();
 
     return (
         <>
             {title && <Title $isDarkMode={isDarkMode}>{title}</Title>}
             <StyledSection>
-                {stats.total.map((entry) => (
-                    <Card
-                        key={entry.social}
-                        social={entry.social}
-                        userName={entry.userName}
-                        total={entry.total}
-                        today={entry.today}
-                    />
-                ))}
+                {type === "main" &&
+                    cardsData.map((entry) => (
+                        <CardMain
+                            key={entry.platform}
+                            platform={entry.platform}
+                            userName={entry.userName}
+                            total={entry.total}
+                            today={entry.today}
+                        />
+                    ))}
+                {type === "daily" &&
+                    cardsData.map((entry) => (
+                        <CardSmall
+                            key={entry.platform + entry.amount}
+                            platform={entry.platform}
+                            unit={entry.unit}
+                            amount={entry.amount}
+                            percentage={entry.percentage}
+                        />
+                    ))}
             </StyledSection>
         </>
     );
